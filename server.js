@@ -13,22 +13,15 @@ function handleRequest(req, res) {
 
   // When we visit different urls, read and respond with different files
   switch (path) {
-    case "/food":
-      return fs.readFile(__dirname + "/food.html", function(err, data) {
+    case "/notes":
+      return fs.readFile(__dirname + "/notes.html", function(err, data) {
         if (err) throw err;
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(data);
       });
 
-    case "/movies":
-      return fs.readFile(__dirname + "/movies.html", function(err, data) {
-        if (err) throw err;
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-      });
-
-    case "/frameworks":
-      return fs.readFile(__dirname + "/frameworks.html", function(err, data) {
+    case "/*":
+      return fs.readFile(__dirname + "/index.html", function(err, data) {
         if (err) throw err;
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(data);
